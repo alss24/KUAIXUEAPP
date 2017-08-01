@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h2>操作成功</h2>
+<p><?php echo $msg;?></p>
+<p><span id="_time"><?php echo $time;?></span>秒钟之后将进行跳转<a href="__ROOT__">返回首页</a></p>
+<script type="text/javascript">
+	var time = document.getElementById("_time").innerHTML;
+	function revTime(){
+		time--;
+		if(time>0){
+			document.getElementById("_time").innerHTML = time;
+		}
+	}
+	setInterval("revTime()",1000);
+</script>
+</body>
+</html>
