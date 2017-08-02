@@ -27,6 +27,10 @@ final class KUAIXUEPHP
 
 
 		define("ROOT_PATH",dirname(KUAIXUEPHP_PATH));
+		//临时目录
+		define("TEMP_PATH",ROOT_PATH.'/Temp');
+		//日志目录
+		define("LOG_PATH",TEMP_PATH.'/Log');
 		//应用目录
 		define("APP_PATH",ROOT_PATH.'/'.APP_NAME);
 		define("APP_CONFIG_PATH",APP_PATH.'/Config');
@@ -42,7 +46,9 @@ final class KUAIXUEPHP
 			APP_CONFIG_PATH,
 			APP_CONTROLLER_PATH,
 			APP_TPL_PATH,
-			APP_PUBLIC_PATH
+			APP_PUBLIC_PATH,
+			TEMP_PATH,
+			LOG_PATH
 			);
 
 		foreach($arr as $v){
@@ -59,6 +65,7 @@ final class KUAIXUEPHP
 	private static function _import_file(){
 		$flieArr = array(
 			FUNCTION_PATH.'/function.php',
+			CORE_PATH.'/Log.class.php',
 			CORE_PATH.'/Controller.class.php',
 			CORE_PATH.'/Application.class.php'
 			);

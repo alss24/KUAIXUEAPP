@@ -11,5 +11,7 @@ return array(
 	//url中对应的控制器标识符
 	"VAR_CONTROLLER"=>"c",
 	//url中对应的方法名标识符
-	"VAR_ACTION"=>"a"
+	"VAR_ACTION"=>"a",
+	//是否开启日志
+	"SAVE_LOG"=>TRUE,
 	);

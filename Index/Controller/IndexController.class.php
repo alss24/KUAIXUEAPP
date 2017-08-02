@@ -5,6 +5,7 @@ class IndexController extends ComController{
 	}
 	public function index(){
 		//$this->success('成功');
+		Log::write('hello log');
 	}
 }
 ?>
