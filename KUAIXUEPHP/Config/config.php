@@ -14,4 +14,8 @@ return array(
 	"VAR_ACTION"=>"a",
 	//是否开启日志
 	"SAVE_LOG"=>TRUE,
+	//错误跳转地址
+	'ERROR_URL'=>'',
+	//错误提示信息
+	'ERROR_MSG'=>'网站出错了，请稍候再试。。。',
 	);

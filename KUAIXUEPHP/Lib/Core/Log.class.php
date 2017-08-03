@@ -1,6 +1,7 @@
 <?php
 //系统日志类
 class Log{
+	//$msg 是字符串格式的错误信息
 	public static function write($msg, $level='ERROR',$type=3,$dest=NULL){
 		if(!C('SAVE_LOG')) return;
 		if(is_null($dest)){
