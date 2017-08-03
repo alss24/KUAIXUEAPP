@@ -1,7 +1,7 @@
 <?php
 class Controller{
 	public function __construct(){
-		echo "父类的构造函数必须执行";
+
 		if(method_exists($this, '__init')){
 			$this->__init();
 		}
@@ -15,3 +15,4 @@ class Controller{
 		die;
 	}
 }
+?>

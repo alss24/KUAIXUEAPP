@@ -39,3 +39,4 @@ function C($var = NULL,$value = NULL){
 		return $config;
 	}
 }
+?>

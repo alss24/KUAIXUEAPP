@@ -5,10 +5,18 @@ final class KUAIXUEPHP
 	public static function run(){
 		//设置常量
 		self::_set_const();
-		//创建应用所需文件夹
-		self::_create_dir();
-		//载入应用所需核心文件
-		self::_import_file();
+		//默认关闭调试模式
+		defined("DEBUG")||define("DEBUG",false);
+		if(DEBUG){
+			//创建应用所需文件夹
+			self::_create_dir();
+			//载入应用所需核心文件
+			self::_import_file();
+		}else{
+			error_reporting(0);//屏蔽所有错误提示
+			include TEMP_PATH."/~boot.php";
+		}
+		
 		Application::run();
 	}
 	//设置应用所需常量
@@ -69,9 +77,13 @@ final class KUAIXUEPHP
 			CORE_PATH.'/Controller.class.php',
 			CORE_PATH.'/Application.class.php'
 			);
+		$str = "";//用于存储所有要引入的文件的字符串内容
 		foreach($flieArr as $v){
+			$str .= trim(substr(file_get_contents($v),5,-2));
 			require_once $v;
 		}
+		$str = "<?php \r\n".$str."\r\n";
+		file_put_contents(TEMP_PATH.'/~boot.php',$str)||die("access not allow");
 	}
 
 
