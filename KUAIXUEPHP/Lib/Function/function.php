@@ -1,6 +1,6 @@
 <?php
 
-
+//错误提示信息
 function halt($error,$level='ERROR',$type=3,$dest=NULL){
 	if(is_array($error)){
 		Log::write($error['message'],$level,$type,$dest);
@@ -35,6 +35,13 @@ function halt($error,$level='ERROR',$type=3,$dest=NULL){
 
 	include DATA_PATH.'/Tpl/halt.html';
 	die;
+}
+
+//打印用户自定义的常量
+function print_const(){
+	$const = get_default_constants(true);//true表示返回带键值的数组
+	p($const['user']);
+
 }
 
 

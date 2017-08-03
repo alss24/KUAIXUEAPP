@@ -1,4 +1,5 @@
 <?php 
+//错误提示信息
 function halt($error,$level='ERROR',$type=3,$dest=NULL){
 	if(is_array($error)){
 		Log::write($error['message'],$level,$type,$dest);
@@ -33,6 +34,13 @@ function halt($error,$level='ERROR',$type=3,$dest=NULL){
 
 	include DATA_PATH.'/Tpl/halt.html';
 	die;
+}
+
+//打印用户自定义的常量
+function print_const(){
+	$const = get_default_constants(true);//true表示返回带键值的数组
+	p($const['user']);
+
 }
 
 
@@ -111,6 +119,11 @@ class Log{
 		}
 	}
 }class Controller{
+
+	//用于存放模版赋值的键值对
+	private $var = array();
+
+	//构造函数
 	public function __construct(){
 
 		if(method_exists($this, '__init')){
@@ -120,11 +133,33 @@ class Log{
 			$this->__auto();
 		}
 	}
+	//成功提示方法
 	protected function success($msg,$url=NULL,$time=3){
 		$url = $url?"window.location.href='".$url."'":"window.history.back(-1)";
 		include APP_TPL_PATH."/success.html";
 		die;
 	}
+
+	//模版赋值
+	protected function assign($var = NULL, $value=NULL){
+		$this->var[$var] = $value;
+	}
+
+	//模版显示
+	protected function display($tpl=NULL){
+		if(is_null($tpl)){
+			$path = APP_TPL_PATH.'/'.CONTROLLER.'/'.ACTION.'.html';
+		}else{
+			$suffix = strrchr($tpl,'.');// strrchr 搜索 第二个字符 在字符串中的位置，并返回从该位置到字符串结尾的所有字符
+			$tpl = empty($suffix)?$tpl.'.html':$tpl;//如果没有扩展名则默认是html
+			$path = APP_TPL_PATH.'/'.CONTROLLER.'/'.$tpl;
+
+		}
+		if(!is_file($path)) halt($path.'模版文件不存在');
+		extract($this->var);
+		include $path;
+	}
+
 }final class Application{
 	public static function run(){
 		
@@ -197,7 +232,8 @@ str;
 	private static function _app_run(){
 		$c = isset($_GET['VAR_CONTROLLER'])?$_GET['VAR_CONTROLLER']:"Index";
 		$a = isset($_GET['VAR_ACTION'])?$_GET['VAR_ACTION']:"index";
-
+		define("CONTROLLER",$c);
+		define("ACTION",$a);
 		$c .= 'Controller';
 		$obj = new $c();
 		$obj->$a(); 

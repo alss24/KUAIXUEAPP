@@ -1,7 +1,9 @@
 <?php
 class IndexController extends Controller{
 	public function index(){
-		echo "ok";
+		$var= 'qiyun';
+		$this->assign('var',$var);
+		$this->display();
 	}
 }
 ?>

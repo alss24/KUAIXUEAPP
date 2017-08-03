@@ -71,7 +71,8 @@ str;
 	private static function _app_run(){
 		$c = isset($_GET['VAR_CONTROLLER'])?$_GET['VAR_CONTROLLER']:"Index";
 		$a = isset($_GET['VAR_ACTION'])?$_GET['VAR_ACTION']:"index";
-
+		define("CONTROLLER",$c);
+		define("ACTION",$a);
 		$c .= 'Controller';
 		$obj = new $c();
 		$obj->$a(); 
