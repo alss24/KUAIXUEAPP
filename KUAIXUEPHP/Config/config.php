@@ -18,4 +18,6 @@ return array(
 	'ERROR_URL'=>'',
 	//错误提示信息
 	'ERROR_MSG'=>'网站出错了，请稍候再试。。。',
+	//自动加载Common/Lib目录下的文件，可以载入多个
+	'AUTO_LOAD_FILE'=>array(),
 	);

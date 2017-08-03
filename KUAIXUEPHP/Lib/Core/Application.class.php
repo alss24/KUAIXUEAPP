@@ -4,6 +4,8 @@ final class Application{
 		
 		self::_init();
 		self::_set_url();
+		//载入用户自定义的库文件
+		self::_user_import();
 		//自动载入
 		spl_autoload_register(array(__CLASS__,'_autoload'));
 		//创建默认控制器
@@ -101,7 +103,15 @@ str;
 	}
 
 	
-
+	//载入用户自定义的库文件
+	private static function _user_import(){
+		$fileArr = C('AUTO_LOAD_FILE');
+		if(is_array($fileArr)&& !empty($fileArr)){
+			foreach ($fileArr as $v) {
+				require_once COMMON_LIB_PATH.'/'.$v;
+			}
+		}
+	}
 	
 	
 	
