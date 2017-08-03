@@ -1,11 +1,26 @@
 <?php 
 //打印函数
 function p($arr){
-	echo "<pre>";
-	print_r($arr);
-	echo "</pre>";
+	if(is_bool($arr)){
+		var_dump($arr);
+	}else if(is_null($arr)){
+		var_dump($arr);
+	}else{
+		echo "<pre style='padding:10px;border-radius:5px;background:#f5f5f5;border:1px solid #ccc;font-size:15px;'>".print_r($arr,true)."</pre>";
+	}
 }
 
+
+
+//跳转函数
+function go($url,$time=0,$msg=''){
+	/*headers_sent() 函数检查 HTTP 标头是否已被发送以及在哪里被发送。
+	如果报头已发送，则返回 true，否则返回 false。*/
+	if(!headers_sent()){
+		$time==0?header("Location:".$url):header("refresh:{$time};url={$url}");
+		die($msg);
+	}
+}
 /*加载配置项
 1.首先加载系统默认配置项C($sysConfig) 之后加载用户自定义配置项C($userConfig),用户自定义的配置项优先级高于系统默认配置项
 2.读取配置项
