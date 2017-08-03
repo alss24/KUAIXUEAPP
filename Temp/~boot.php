@@ -177,6 +177,28 @@ class Log{
 	private static function _init(){
 		//加载配置项
 		C( include CONFIG_PATH.'/config.php' );
+
+
+		//公共配置项
+		$commonPath = COMMON_CONFIG_PATH.'/config.php';
+		$commonConfig = <<<str
+<?php
+return array(
+	//配置项=>配置值
+);
+?>
+str;
+	
+		//查看是否已经有自定义的公共配置项文件了，如果没有则为之创建一个默认的
+		is_file($commonPath)||file_put_contents($commonPath, $commonConfig);
+
+		//加载公告的配置项
+		C( include $commonPath );
+
+
+
+
+
 		//用户配置项
 		$userPath = APP_CONFIG_PATH.'/config.php';
 		$userConfig = <<<str
