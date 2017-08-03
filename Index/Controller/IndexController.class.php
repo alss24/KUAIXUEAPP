@@ -1,7 +1,7 @@
 <?php
 class IndexController extends Controller{
 	public function index(){
-		d(1);
+		echo ORG_PATH;
 	}
 }
 ?>

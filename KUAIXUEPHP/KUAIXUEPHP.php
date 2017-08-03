@@ -33,6 +33,12 @@ final class KUAIXUEPHP
 		define("CORE_PATH",LIB_PATH."/Core");
 		define("FUNCTION_PATH",LIB_PATH."/Function");
 
+		//第三方类库文件
+		define('EXTENDS_PATH',KUAIXUEPHP_PATH.'/Extends');
+		//第三方类库文件中的工具类目录
+		define('TOOL_PATH',EXTENDS_PATH.'/Tool');
+		//第三方扩展类目录
+		define('ORG_PATH',EXTENDS_PATH.'/Org');
 
 		define("ROOT_PATH",dirname(KUAIXUEPHP_PATH));
 		//临时目录
