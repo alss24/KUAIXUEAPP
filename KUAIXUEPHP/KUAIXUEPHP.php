@@ -45,6 +45,14 @@ final class KUAIXUEPHP
 		define("APP_CONTROLLER_PATH",APP_PATH.'/Controller');
 		define("APP_TPL_PATH",APP_PATH.'/Tpl');
 		define("APP_PUBLIC_PATH",APP_TPL_PATH."/Public");
+
+		define("KUAIXUEPHP_VERSION",'1.0');
+		define("IS_POST",( $_SERVER['REQUEST_METHOD']=='POST'?true:false) );
+		if( isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest' ){
+			define('IS_AJAX',true);
+		}else{
+			define('IS_AJAX',false);
+		}
 		
 	}
 	//运行框架核心类系统自动创建应用目录
