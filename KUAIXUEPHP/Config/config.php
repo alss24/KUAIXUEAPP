@@ -20,4 +20,13 @@ return array(
 	'ERROR_MSG'=>'网站出错了，请稍候再试。。。',
 	//自动加载Common/Lib目录下的文件，可以载入多个
 	'AUTO_LOAD_FILE'=>array(),
+
+	//数据库配置
+	'DB_CHARSET'=>'utf-8',
+	'DB_HOST'=>'127.0.0.1',
+	'DB_PORT'=>3306,
+	'DB_USER'=>'root',
+	'DB_PASSWORD'=>'123456',
+	'DB_DATABASE'=>'db_maven',
+	'DB_PREFIX'=>'t_'
 	);

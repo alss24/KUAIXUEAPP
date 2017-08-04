@@ -40,7 +40,7 @@ final class Application{
 			case E_USER_ERROR:
 				$msg = $error.$file."第{$line}行";
 				halt($msg);
-				break;
+				break; 
 			case E_STRICT:
 			case E_USER_WARNING:
 			case E_USER_NOTICE:

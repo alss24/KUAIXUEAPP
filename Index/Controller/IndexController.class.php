@@ -4,7 +4,7 @@ class IndexController extends Controller{
 		echo "__empty";
 	}
 	public function index(){
-		sdfsdf
+		$link = new Model();
 	}
 }
 ?>
