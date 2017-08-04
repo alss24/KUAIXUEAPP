@@ -18,7 +18,19 @@ class Model{
 		//初始化sql信息
 		$this->_opt();
 	}
-
+	public function query($sql){
+		self::$sqls[] = $sql;//将每次的sql语句保存
+		$link = self::$link;
+		$result = $link->query($sql);
+		if($link->error) halt('mysql错误:'.$link->error.'<br/>SQL:'.$sql);
+		$rows = array();
+		while($row = $result->fetch_assoc()){
+			$rows[] = $row;
+		}
+		$result->free();//释放数据库查询的结果
+		$this->_opt();
+		return $rows;
+	}
 	private function _opt(){
 		$this->opt = array(
 			'field'=>'*',

@@ -4,7 +4,10 @@ class IndexController extends Controller{
 		echo "__empty";
 	}
 	public function index(){
-		$link = new Model();
+		$link = new Model('user');
+		$sql = 'select * from t_user';
+		$data = $link->query($sql);
+		p($data);
 	}
 }
 ?>
