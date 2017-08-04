@@ -240,7 +240,18 @@ str;
 			//判断是否是控制器,例如：IndexController
 			case strlen($className)>10 && substr($className,-10)=='Controller':
 				$path = APP_CONTROLLER_PATH.'/'.$className.'.class.php';
-				if(!is_file($path)) halt($path.'控制器未找到');
+
+				if(!is_file($path)) {
+					//用户可以自定义一个EmptyController文件，防止用户胡乱输入控制器名称
+					$emptyPath = APP_CONTROLLER_PATH.'/EmptyController.class.php';
+					if(is_file($emptyPath)){
+						include $emptyPath;
+						return;
+					}else{
+						halt($path.'控制器未找到');
+					}
+					
+				}
 				include $path;
 				break;
 			
@@ -269,13 +280,21 @@ str;
 	}
 	//实例化应用控制器
 	private static function _app_run(){
-		$c = isset($_GET['VAR_CONTROLLER'])?$_GET['VAR_CONTROLLER']:"Index";
-		$a = isset($_GET['VAR_ACTION'])?$_GET['VAR_ACTION']:"index";
+	
+		$c = isset($_GET[C('VAR_CONTROLLER')])?$_GET[C('VAR_CONTROLLER')]:"Index";
+		$a = isset($_GET[C('VAR_ACTION')])?$_GET[C('VAR_ACTION')]:"index";
 		define("CONTROLLER",$c);
 		define("ACTION",$a);
+
 		$c .= 'Controller';
-		$obj = new $c();
-		$obj->$a(); 
+		if(class_exists($c)){//先查看一下用户地址栏中要访问的控制器是否存在
+			$obj = new $c();
+			$obj->$a();
+		}else{
+			$obj = new EmptyController();
+			$obj->index();
+		}
+		 
 	}
 
 	

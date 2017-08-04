@@ -1,6 +1,6 @@
 <?php 
 class Code{
 	public function show(){
-		echo 'code';
+		echo 'tool code';
 	}
 }
