@@ -128,7 +128,19 @@ str;
 		$c .= 'Controller';
 		if(class_exists($c)){//先查看一下用户地址栏中要访问的控制器是否存在
 			$obj = new $c();
-			$obj->$a();
+			//判断要访问的方法是否存在
+			if(!method_exists($obj,$a)){
+				if(method_exists($obj,'__empty')){
+					//用户自定义__empty方法
+					$obj->__empty();
+				}else{
+					//用户没有自定义__empty方法
+					halt($c.'控制器中'.$a.'方法不存在');
+				}
+			}else{
+				$obj->$a();
+			}
+			
 		}else{
 			$obj = new EmptyController();
 			$obj->index();
