@@ -3,9 +3,31 @@ class Model{
 	//保存连接信息
 	public static  $link = NULL;
 
-	public function __construct(){
+	//保存表名
+	protected $table = NULL;
+	//初始化表信息
+	private $opt;
+	//记录发送过的sql
+	public static $sqls = array();
+
+	public function __construct($table=NULL){
+		$this->table = is_null($table)?C('DB_PREFIX').$this->table:C('DB_PREFIX').$table;
+
 		//连接数据库
 		$this->_connect();
+		//初始化sql信息
+		$this->_opt();
+	}
+
+	private function _opt(){
+		$this->opt = array(
+			'field'=>'*',
+			'where'=>'',
+			'group'=>'',
+			'having'=>'',
+			'order'=>'',
+			'limit'=>''
+			);
 	}
 	//连接数据库
 	private function _connect(){

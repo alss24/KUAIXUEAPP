@@ -12,3 +12,4 @@
 [TIME]:2017-08-04 21:02:48ERROR:syntax error, unexpected '}'D:\phpStudy\WWW\KUAIXUEAPP\Index\Controller\IndexController.class.php第8行
 [TIME]:2017-08-04 21:31:18ERROR:syntax error, unexpected '$link' (T_VARIABLE), expecting identifier (T_STRING)D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Tool\Model.class.php第4行
 [TIME]:2017-08-04 21:31:39ERROR:syntax error, unexpected ':', expecting ',' or ';'D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Tool\Model.class.php第4行
+[TIME]:2017-08-04 21:32:46ERROR:数据库连接错误，请检查配置项
