@@ -1,7 +1,8 @@
 <?php
 class IndexController extends Controller{
 	public function index(){
-		echo ORG_PATH;
+		$code = new Code2();
+		$code->show();
 	}
 }
 ?>

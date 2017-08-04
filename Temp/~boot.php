@@ -235,8 +235,23 @@ str;
 	}
 	//自动载入
 	private static function _autoload($className){
-		//echo $className;//IndexController
-		include APP_CONTROLLER_PATH.'/'.$className.'.class.php';
+		
+		switch (true) {
+			//判断是否是控制器,例如：IndexController
+			case strlen($className)>10 && substr($className,-10)=='Controller':
+				$path = APP_CONTROLLER_PATH.'/'.$className.'.class.php';
+				if(!is_file($path)) halt($path.'控制器未找到');
+				include $path;
+				break;
+			
+			default:
+				//工具类
+				$path = TOOL_PATH.'/'.$className.".class.php";
+				if(!is_file($path)) halt($path.'类未找到');
+				include $path;
+				break;
+		}
+		
 	}
 	//创建默认控制器
 	private static function _create_demo(){
