@@ -9,3 +9,4 @@
 [TIME]:2017-08-04 16:54:09ERROR:E:/app/phpstudy/WWW/KUAIXUEAPP/Index/Controller/LoginController.class.php控制器未找到
 [TIME]:2017-08-04 16:54:18ERROR:E:/app/phpstudy/WWW/KUAIXUEAPP/Index/Controller/LoginController.class.php控制器未找到
 [TIME]:2017-08-04 17:15:18ERROR:IndexController控制器中aaa方法不存在
+[TIME]:2017-08-04 21:02:48ERROR:syntax error, unexpected '}'D:\phpStudy\WWW\KUAIXUEAPP\Index\Controller\IndexController.class.php第8行

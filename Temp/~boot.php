@@ -164,6 +164,10 @@ class Log{
 	public static function run(){
 		
 		self::_init();
+		//非致命错误处理
+		set_error_handler(array(__CLASS__,'error'));//set_error_handler() 函数设置用户定义的错误处理函数。
+		//致命错误的处理
+		register_shutdown_function(array(__CLASS__,'fatal_error'));
 		self::_set_url();
 		//载入用户自定义的库文件
 		self::_user_import();
@@ -174,7 +178,42 @@ class Log{
 
 		self::_app_run();
 	}
+	/*如果运行中出现致命错误会调用fatal_error,如果运行完了没有致命错误，也会调用fatal_error,不过此时error_get_last中没有信息*/
+	public static function fatal_error(){
+		if($e = error_get_last()){//返回最后发生的错误：以数组的形式
+			//p($e);die;Array
+				/*(
+				    [type] => 4
+				    [message] => syntax error, unexpected '}'
+				    [file] => D:\phpStudy\WWW\KUAIXUEAPP\Index\Controller\IndexController.class.php
+				    [line] => 8
+				)*/
 
+				self::error($e['type'],$e['message'],$e['file'],$e['line']);
+		}
+	}
+	public static function error($errno,$error,$file,$line){
+		switch ($errno) {
+			case E_ERROR:
+			case E_PARSE:
+			case E_CORE_ERROR:
+			case E_COMPILE_ERROR:
+			case E_USER_ERROR:
+				$msg = $error.$file."第{$line}行";
+				halt($msg);
+				break;
+			case E_STRICT:
+			case E_USER_WARNING:
+			case E_USER_NOTICE:
+
+			
+			default:
+				if(DEBUG){
+					include DATA_PATH.'/Tpl/notice.html';
+				}
+				break;
+		}
+	}
 	//初始化框架
 	private static function _init(){
 		//加载配置项

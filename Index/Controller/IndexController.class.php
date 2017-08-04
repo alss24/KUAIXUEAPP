@@ -4,8 +4,7 @@ class IndexController extends Controller{
 		echo "__empty";
 	}
 	public function index(){
-		$code = new Code();
-		$code->show();
+		sdfsdf
 	}
 }
 ?>
