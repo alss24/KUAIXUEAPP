@@ -105,6 +105,13 @@ function C($var = NULL,$value = NULL){
 	if(is_null($var)&&is_null($value)){
 		return $config;
 	}
+}
+
+
+//数据库操作中的M函数
+function M($table){
+	$obj = new Model($table);
+	return $obj;
 }//系统日志类
 class Log{
 	//$msg 是字符串格式的错误信息

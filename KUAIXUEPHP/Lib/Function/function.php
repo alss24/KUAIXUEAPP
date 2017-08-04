@@ -107,4 +107,11 @@ function C($var = NULL,$value = NULL){
 		return $config;
 	}
 }
+
+
+//数据库操作中的M函数
+function M($table){
+	$obj = new Model($table);
+	return $obj;
+}
 ?>

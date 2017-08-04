@@ -31,6 +31,11 @@ class Model{
 		$this->_opt();
 		return $rows;
 	}
+
+	public function all(){
+		$sql = "SELECT".$this->opt['field']." FROM ".$this->table.$this->opt['where'].$this->opt['group'].$this->opt['having'].$this->opt['order'].$this->opt['limit'];
+		return $this->query($sql);
+	}
 	private function _opt(){
 		$this->opt = array(
 			'field'=>'*',

@@ -13,3 +13,4 @@
 [TIME]:2017-08-04 21:31:18ERROR:syntax error, unexpected '$link' (T_VARIABLE), expecting identifier (T_STRING)D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Tool\Model.class.php第4行
 [TIME]:2017-08-04 21:31:39ERROR:syntax error, unexpected ':', expecting ',' or ';'D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Tool\Model.class.php第4行
 [TIME]:2017-08-04 21:32:46ERROR:数据库连接错误，请检查配置项
+[TIME]:2017-08-04 22:09:05ERROR:mysql错误:Table 'db_maven.t_t_user' doesn't exist<br/>SQL:SELECT* FROM t_t_user
