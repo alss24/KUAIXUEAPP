@@ -36,6 +36,30 @@ class Model{
 		$sql = "SELECT".$this->opt['field']." FROM ".$this->table.$this->opt['where'].$this->opt['group'].$this->opt['having'].$this->opt['order'].$this->opt['limit'];
 		return $this->query($sql);
 	}
+
+	//查询指定字段的数据
+	public  function field($field){
+		$this->opt['field'] = $field;
+		return $this;
+	}
+	//添加查询条件where
+	public function where($where){
+		$this->opt['where'] = " WHERE ".$where;
+		return $this;
+	}
+
+	
+	public  function order($order){
+		$this->opt['order'] = " ORDER BY ".$order;
+		return $this;
+	}
+
+	public  function limit($limit){
+		$this->opt['limit'] = " LIMIT ".$limit;
+		return $this;
+	}
+
+
 	private function _opt(){
 		$this->opt = array(
 			'field'=>'*',
