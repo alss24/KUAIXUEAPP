@@ -27,7 +27,14 @@ class Controller extends SmartyView{
 
 	//模版赋值
 	protected function assign($var = NULL, $value=NULL){
-		$this->var[$var] = $value;
+	
+		if(C('SMARTY_ON')){
+
+			
+			parent::assign($var,$value);
+		}else{
+			$this->var[$var] = $value;
+		}
 	}
 
 

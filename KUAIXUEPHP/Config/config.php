@@ -39,5 +39,5 @@ return array(
 	//是否开启缓存
 	'CACHE_ON'=>false,
 	//缓存时间
-	'CACHE_TIME'=>60,
+	'CACHE_TIME'=>1,
 	);

@@ -28,4 +28,10 @@ class SmartyView{
 	protected function display($tpl){
 		self::$smarty->display($tpl,$_SERVER['REQUEST_URI']);
 	}
+
+	//模版赋值
+	protected function assign($var, $value){
+	
+		self::$smarty->assign($var,$value);
+	}
 }

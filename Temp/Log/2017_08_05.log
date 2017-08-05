@@ -16,3 +16,4 @@
 [TIME]:2017-08-05 22:45:49ERROR:Smarty error: the $compile_dir 'templates_c' does not exist, or is not a directory.D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Org\Smarty\Smarty.class.php第1093行
 [TIME]:2017-08-05 22:45:57ERROR:Smarty error: the $compile_dir 'templates_c' does not exist, or is not a directory.D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Org\Smarty\Smarty.class.php第1093行
 [TIME]:2017-08-05 22:46:29ERROR:Smarty error: the $compile_dir 'templates_c' does not exist, or is not a directory.D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Org\Smarty\Smarty.class.php第1093行
+[TIME]:2017-08-05 23:20:29ERROR:syntax error, unexpected '$this' (T_VARIABLE)D:\phpStudy\WWW\KUAIXUEAPP\Index\Controller\IndexController.class.php第11行

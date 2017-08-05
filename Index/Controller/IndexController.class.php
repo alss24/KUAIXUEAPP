@@ -7,6 +7,7 @@ class IndexController extends Controller{
 	
 		/*$smarty = new Smarty();
 		p($smarty);*/
+		$this->assign('var','test');
 		$this->display();
 	}
 }
