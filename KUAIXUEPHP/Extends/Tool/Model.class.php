@@ -34,6 +34,7 @@ class Model{
 	}
 	//无结果的方法实现,比如delete,insert
 	public function exe($sql){
+		
 		self::$sqls[] = $sql;
 		$link = self::$link;
 		$bool = $link->query($sql);
@@ -43,12 +44,18 @@ class Model{
 		}
 
 		if ($bool) {
-			return $link->insert_id?$link->insert_id:$link->affected_rows;
+			return $link->insert_id?$link->insert_id:$link->affected_rows;//affected_rows 所影响的记录行数
 		}else{
 			halt('mysql错误:'.$link->error."<br/>SQL:".$sql);
 		}
 	}
+	//删除方法
+	public function delete(){
+		if(empty($this->opt['where'])) halt('删除语句必须有where');
+		$sql = "DELETE FROM ".$this->table.$this->opt['where'];
+		$this->exe($sql);
 
+	}
 	//获取符合条件的所有数据
 	public function all(){
 		$sql = "SELECT".$this->opt['field']." FROM ".$this->table.$this->opt['where'].$this->opt['group'].$this->opt['having'].$this->opt['order'].$this->opt['limit'];
