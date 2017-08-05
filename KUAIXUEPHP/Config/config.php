@@ -28,5 +28,14 @@ return array(
 	'DB_USER'=>'root',
 	'DB_PASSWORD'=>'123456',
 	'DB_DATABASE'=>'db_maven',
-	'DB_PREFIX'=>'t_'
+	'DB_PREFIX'=>'t_',
+	//smarty配置项
+	//左定界符
+	'LEFT_DELIMITER'=>'{kx',
+	//右定界符
+	'RIGHT_DELIMITER'=>'}',
+	//是否开启缓存
+	'CACHE_ON'=>false,
+	//缓存时间
+	'CACHE_TIME'=>60,
 	);

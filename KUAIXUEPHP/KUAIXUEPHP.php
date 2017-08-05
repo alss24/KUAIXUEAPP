@@ -51,6 +51,12 @@ final class KUAIXUEPHP
 		define("APP_CONTROLLER_PATH",APP_PATH.'/Controller');
 		define("APP_TPL_PATH",APP_PATH.'/Tpl');
 		define("APP_PUBLIC_PATH",APP_TPL_PATH."/Public");
+
+		//smary的编译目录
+		define("APP_COMPILE_PATH",TEMP_PATH.'/'.APP_NAME.'/Compile');//E:/app/phpstudy/WWW/KUAIXUEAPP/Temp/Index/Compile
+		//缓存目录
+		define("APP_CACHE_PATH",TEMP_PATH.'/'.APP_NAME.'/Cache');//E:/app/phpstudy/WWW/KUAIXUEAPP/Temp/Index/Cache
+		
 		//创建公共
 		define("COMMON_PATH",ROOT_PATH.'/Common');
 		//公共配置项文件夹
@@ -80,6 +86,8 @@ final class KUAIXUEPHP
 			APP_TPL_PATH,
 			APP_PUBLIC_PATH,
 			TEMP_PATH,
+			APP_COMPILE_PATH,
+			APP_CACHE_PATH,
 			LOG_PATH
 			);
 
@@ -98,7 +106,7 @@ final class KUAIXUEPHP
 		$flieArr = array(
 			CORE_PATH.'/Log.class.php',
 			FUNCTION_PATH.'/function.php',
-			
+
 			ORG_PATH.'/Smarty/Smarty.class.php',
 			CORE_PATH.'/SmartyView.class.php',
 
