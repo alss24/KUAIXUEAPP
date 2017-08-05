@@ -5,7 +5,7 @@ class IndexController extends Controller{
 	}
 	public function index(){
 		if(IS_POST){
-			M('admin')->add();
+			M('admin')->where()->update();
 			$this->success('添加成功');
 		}
 		$this->display();

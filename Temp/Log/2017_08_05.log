@@ -4,3 +4,8 @@
 [TIME]:2017-08-05 15:02:21ERROR:mysql错误:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inse1rt into wl_admin set username="insert_admin"' at line 1<br/>SQL:inse1rt into wl_admin set username="insert_admin"
 [TIME]:2017-08-05 15:17:00ERROR:删除语句必须有where
 [TIME]:2017-08-05 15:54:57ERROR:mysql错误:Unknown column 'nickname' in 'field list'<br/>SQL:INSERT INTO wl_admin(`nickname`,`content`) VALUES('12','12')
+[TIME]:2017-08-05 16:27:19ERROR:更新语句必须有where
+[TIME]:2017-08-05 16:27:33ERROR:mysql错误:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1<br/>SQL:UPDATE wl_admin SET `username`='12',`email`='12' WHERE 
+[TIME]:2017-08-05 16:29:34ERROR:更新语句必须有where
+[TIME]:2017-08-05 16:29:51ERROR:更新语句必须有where
+[TIME]:2017-08-05 16:29:59ERROR:更新语句必须有where

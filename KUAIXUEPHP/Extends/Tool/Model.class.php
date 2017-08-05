@@ -52,7 +52,7 @@ class Model{
 	//添加方法
 	public function add($data=NULL){
 		if(is_null($data)) $data = $_POST;
-		
+
 		$fields = '';
 		$values = '';
 		foreach ($data as $f => $v) {
@@ -63,6 +63,21 @@ class Model{
 		$values = trim($values,',');
 
 		$sql = "INSERT INTO ".$this->table."(".$fields.") VALUES(".$values.")";
+		return $this->exe($sql);
+	}
+
+	//修改方法
+	public function update($data=NULL){
+		if(empty($this->opt['where'])) halt('更新语句必须有where');
+
+		if(is_null($data)) $data = $_POST;
+
+		$values = '';
+		foreach ($data as $f => $v) {
+			$values .="`".$this->_safe_str($f)."`='".$this->_safe_str($v)."',";
+		}
+		$values = trim($values,',');
+		$sql = "UPDATE ".$this->table." SET ".$values.$this->opt['where'];
 		return $this->exe($sql);
 	}
 	//删除方法
@@ -89,7 +104,10 @@ class Model{
 	}
 	//添加查询条件where
 	public function where($where){
-		$this->opt['where'] = " WHERE ".$where;
+		if(!empty($where)){
+			$this->opt['where'] = " WHERE ".$where;
+		}
+		
 		return $this;
 	}
 
