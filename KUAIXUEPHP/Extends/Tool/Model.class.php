@@ -49,6 +49,22 @@ class Model{
 			halt('mysql错误:'.$link->error."<br/>SQL:".$sql);
 		}
 	}
+	//添加方法
+	public function add($data=NULL){
+		if(is_null($data)) $data = $_POST;
+		
+		$fields = '';
+		$values = '';
+		foreach ($data as $f => $v) {
+			$fields .="`".$this->_safe_str($f)."`,";
+			$values .="'".$this->_safe_str($v)."',";
+		}
+		$fields = trim($fields,',');
+		$values = trim($values,',');
+
+		$sql = "INSERT INTO ".$this->table."(".$fields.") VALUES(".$values.")";
+		return $this->exe($sql);
+	}
 	//删除方法
 	public function delete(){
 		if(empty($this->opt['where'])) halt('删除语句必须有where');
