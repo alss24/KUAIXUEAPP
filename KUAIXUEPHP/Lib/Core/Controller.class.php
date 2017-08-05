@@ -1,12 +1,12 @@
 <?php
-class Controller{
+class Controller extends SmartyView{
 
 	//用于存放模版赋值的键值对
 	private $var = array();
 
 	//构造函数
 	public function __construct(){
-
+		parent::__construct();
 		if(method_exists($this, '__init')){
 			$this->__init();
 		}

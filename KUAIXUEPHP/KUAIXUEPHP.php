@@ -96,8 +96,12 @@ final class KUAIXUEPHP
 	//载入应用所需核心文件
 	private static function _import_file(){
 		$flieArr = array(
-			FUNCTION_PATH.'/function.php',
 			CORE_PATH.'/Log.class.php',
+			FUNCTION_PATH.'/function.php',
+			
+			ORG_PATH.'/Smarty/Smarty.class.php',
+			CORE_PATH.'/SmartyView.class.php',
+
 			CORE_PATH.'/Controller.class.php',
 			CORE_PATH.'/Application.class.php'
 			);

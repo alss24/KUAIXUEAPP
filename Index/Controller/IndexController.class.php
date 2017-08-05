@@ -5,8 +5,9 @@ class IndexController extends Controller{
 	}
 	public function index(){
 	
-		$data = K('Admin')->get_all_data();
-		$this->display();
+		/*$smarty = new Smarty();
+		p($smarty);*/
+	
 	}
 }
 ?>
