@@ -7,7 +7,10 @@ class IndexController extends Controller{
 	
 		/*$smarty = new Smarty();
 		p($smarty);*/
-		$this->assign('var','test');
+		if(!$this->is_cached()){
+			$this->assign('var',time());
+		}
+		
 		$this->display();
 	}
 }

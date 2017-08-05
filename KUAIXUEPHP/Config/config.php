@@ -37,7 +37,7 @@ return array(
 	//右定界符
 	'RIGHT_DELIMITER'=>'}',
 	//是否开启缓存
-	'CACHE_ON'=>false,
+	'CACHE_ON'=>true,
 	//缓存时间
-	'CACHE_TIME'=>1,
+	'CACHE_TIME'=>2,
 	);

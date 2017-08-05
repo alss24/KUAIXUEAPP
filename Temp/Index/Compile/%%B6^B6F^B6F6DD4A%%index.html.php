@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2017-08-05 23:25:15
+<?php /* Smarty version 2.6.26, created on 2017-08-05 23:49:11
          compiled from D:/phpStudy/WWW/KUAIXUEAPP/Index/Tpl/Index/index.html */ ?>
 <!DOCTYPE html>
 <html>
@@ -6,6 +6,7 @@
 	<title></title>
 </head>
 <body>
+<?php echo $this->_tpl_vars['var']; ?>
 
 <form action="" method="post">
 	<label>
