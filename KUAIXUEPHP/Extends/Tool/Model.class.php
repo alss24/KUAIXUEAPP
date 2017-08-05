@@ -34,7 +34,7 @@ class Model{
 	}
 	//无结果的方法实现,比如delete,insert
 	public function exe($sql){
-		
+
 		self::$sqls[] = $sql;
 		$link = self::$link;
 		$bool = $link->query($sql);
@@ -44,7 +44,7 @@ class Model{
 		}
 
 		if ($bool) {
-			return $link->insert_id?$link->insert_id:$link->affected_rows;//affected_rows 所影响的记录行数
+			return $link->insert_id ? $link->insert_id : $link->affected_rows;//affected_rows 所影响的记录行数
 		}else{
 			halt('mysql错误:'.$link->error."<br/>SQL:".$sql);
 		}
@@ -118,5 +118,16 @@ class Model{
 			$link->set_charset(C('DB_CHARSET'));
 			self::$link = $link;
 		}
+	}
+
+
+	//模型安全处理字符串(处理用户的数据)
+	private function _safe_str($str){
+		//系统开启自动转义
+		if(get_magic_quotes_gpc()){//get_magic_quotes_gpc获取当前 magic_quotes_gpc 的配置选项设置
+			$str = stripslashes($str);//stripslashes() 函数删除由 addslashes() 函数添加的反斜杠。
+		}
+
+		return self::$link->real_escape_string($str);//mysql_real_escape_string() 函数转义 SQL 语句中使用的字符串中的特殊字符。
 	}
 }
