@@ -9,3 +9,6 @@
 [TIME]:2017-08-05 16:29:34ERROR:更新语句必须有where
 [TIME]:2017-08-05 16:29:51ERROR:更新语句必须有where
 [TIME]:2017-08-05 16:29:59ERROR:更新语句必须有where
+[TIME]:2017-08-05 16:37:52ERROR:E:/app/phpstudy/WWW/KUAIXUEAPP/KUAIXUEPHP/Extends/Tool/AdminModel.class.php类未找到
+[TIME]:2017-08-05 16:38:57ERROR:E:/app/phpstudy/WWW/KUAIXUEAPP/KUAIXUEPHP/Extends/Tool/AdminModel.class.php类未找到
+[TIME]:2017-08-05 16:41:56ERROR:Class 'AdminModel' not foundE:\app\phpstudy\WWW\KUAIXUEAPP\Index\Controller\IndexController.class.php第7行

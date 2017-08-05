@@ -114,4 +114,11 @@ function M($table){
 	$obj = new Model($table);
 	return $obj;
 }
+//数据库扩展模型
+function K($model){
+	/*相当于
+	$m = new AdminModel();*/
+	$model .="Model";
+	return new $model;
+}
 ?>

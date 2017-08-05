@@ -112,6 +112,11 @@ function C($var = NULL,$value = NULL){
 function M($table){
 	$obj = new Model($table);
 	return $obj;
+}
+//数据库扩展模型
+function K($model){
+	$model .="Model";
+	return new $model;
 }//系统日志类
 class Log{
 	//$msg 是字符串格式的错误信息
@@ -281,7 +286,7 @@ str;
 	}
 	//自动载入
 	private static function _autoload($className){
-		
+
 		switch (true) {
 			//判断是否是控制器,例如：IndexController
 			case strlen($className)>10 && substr($className,-10)=='Controller':
@@ -300,7 +305,11 @@ str;
 				}
 				include $path;
 				break;
-			
+				//AdminModel
+			case strlen($className)>5 && substr($className,-5) =='Model':
+				$path = COMMON_MODEL_PATH.'/'.$className.'.class.php';
+				include $path;
+				break;
 			default:
 				//工具类
 				$path = TOOL_PATH.'/'.$className.".class.php";

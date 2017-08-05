@@ -4,10 +4,8 @@ class IndexController extends Controller{
 		echo "__empty";
 	}
 	public function index(){
-		if(IS_POST){
-			M('admin')->where()->update();
-			$this->success('添加成功');
-		}
+	
+		$data = K('Admin')->get_all_data();
 		$this->display();
 	}
 }
