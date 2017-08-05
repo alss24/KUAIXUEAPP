@@ -18,19 +18,37 @@ class Model{
 		//初始化sql信息
 		$this->_opt();
 	}
+	//有结果集的方法select
 	public function query($sql){
 		self::$sqls[] = $sql;//将每次的sql语句保存
 		$link = self::$link;
-		$result = $link->query($sql);
+		$result = $link->query($sql);//这里的query是mysqli的方法，不是当前类的query
 		if($link->error) halt('mysql错误:'.$link->error.'<br/>SQL:'.$sql);
 		$rows = array();
 		while($row = $result->fetch_assoc()){
 			$rows[] = $row;
 		}
 		$result->free();//释放数据库查询的结果
-		$this->_opt();
+		$this->_opt();//清空查询的参数
 		return $rows;
 	}
+	//无结果的方法实现,比如delete,insert
+	public function exe($sql){
+		self::$sqls[] = $sql;
+		$link = self::$link;
+		$bool = $link->query($sql);
+		$this->_opt();
+		if(is_object($bool)){
+			halt('请用query方法发送查询sql');
+		}
+
+		if ($bool) {
+			return $link->insert_id?$link->insert_id:$link->affected_rows;
+		}else{
+			halt('mysql错误:'.$link->error."<br/>SQL:".$sql);
+		}
+	}
+
 	//获取符合条件的所有数据
 	public function all(){
 		$sql = "SELECT".$this->opt['field']." FROM ".$this->table.$this->opt['where'].$this->opt['group'].$this->opt['having'].$this->opt['order'].$this->opt['limit'];

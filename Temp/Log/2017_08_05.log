@@ -1,2 +1,4 @@
 [TIME]:2017-08-05 14:30:16ERROR:Call to undefined method Model::find()E:\app\phpstudy\WWW\KUAIXUEAPP\Index\Controller\IndexController.class.php第8行
 [TIME]:2017-08-05 14:30:38ERROR:mysql错误:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECTid,name FROM wl_admin' at line 1<br/>SQL:SELECTid,name FROM wl_admin
+[TIME]:2017-08-05 14:59:21ERROR:请用query方法发送查询sql
+[TIME]:2017-08-05 15:02:21ERROR:mysql错误:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inse1rt into wl_admin set username="insert_admin"' at line 1<br/>SQL:inse1rt into wl_admin set username="insert_admin"
