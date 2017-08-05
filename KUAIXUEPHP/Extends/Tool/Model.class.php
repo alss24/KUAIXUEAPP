@@ -31,15 +31,19 @@ class Model{
 		$this->_opt();
 		return $rows;
 	}
-
+	//获取符合条件的所有数据
 	public function all(){
 		$sql = "SELECT".$this->opt['field']." FROM ".$this->table.$this->opt['where'].$this->opt['group'].$this->opt['having'].$this->opt['order'].$this->opt['limit'];
 		return $this->query($sql);
 	}
+	//all的别名
+	public function findAll(){
+		return $this->all();
+	}
 
 	//查询指定字段的数据
 	public  function field($field){
-		$this->opt['field'] = $field;
+		$this->opt['field'] = " ".$field;
 		return $this;
 	}
 	//添加查询条件where
@@ -58,7 +62,16 @@ class Model{
 		$this->opt['limit'] = " LIMIT ".$limit;
 		return $this;
 	}
-
+	//获取符合条件的一条数据
+	public function find(){
+		$data = $this->limit(1)->all();
+		$data = current($data);
+		return $data;
+	}
+	//find的别名
+	public function one(){
+		return $this->find();
+	}
 
 	private function _opt(){
 		$this->opt = array(

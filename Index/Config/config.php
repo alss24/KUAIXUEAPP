@@ -7,7 +7,7 @@ return array(
 	'DB_PORT'=>3306,
 	'DB_USER'=>'root',
 	'DB_PASSWORD'=>'123456',
-	'DB_DATABASE'=>'db_maven',
-	'DB_PREFIX'=>'t_'
+	'DB_DATABASE'=>'lewenhui',
+	'DB_PREFIX'=>'wl_'
 );
 ?>
