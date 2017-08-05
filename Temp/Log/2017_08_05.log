@@ -12,3 +12,7 @@
 [TIME]:2017-08-05 16:37:52ERROR:E:/app/phpstudy/WWW/KUAIXUEAPP/KUAIXUEPHP/Extends/Tool/AdminModel.class.php类未找到
 [TIME]:2017-08-05 16:38:57ERROR:E:/app/phpstudy/WWW/KUAIXUEAPP/KUAIXUEPHP/Extends/Tool/AdminModel.class.php类未找到
 [TIME]:2017-08-05 16:41:56ERROR:Class 'AdminModel' not foundE:\app\phpstudy\WWW\KUAIXUEAPP\Index\Controller\IndexController.class.php第7行
+[TIME]:2017-08-05 18:48:50ERROR:Smarty error: the $compile_dir 'templates_c' does not exist, or is not a directory.D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Org\Smarty\Smarty.class.php第1093行
+[TIME]:2017-08-05 22:45:49ERROR:Smarty error: the $compile_dir 'templates_c' does not exist, or is not a directory.D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Org\Smarty\Smarty.class.php第1093行
+[TIME]:2017-08-05 22:45:57ERROR:Smarty error: the $compile_dir 'templates_c' does not exist, or is not a directory.D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Org\Smarty\Smarty.class.php第1093行
+[TIME]:2017-08-05 22:46:29ERROR:Smarty error: the $compile_dir 'templates_c' does not exist, or is not a directory.D:\phpStudy\WWW\KUAIXUEAPP\KUAIXUEPHP\Extends\Org\Smarty\Smarty.class.php第1093行

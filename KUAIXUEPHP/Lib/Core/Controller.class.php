@@ -6,7 +6,11 @@ class Controller extends SmartyView{
 
 	//构造函数
 	public function __construct(){
-		parent::__construct();
+		if(C('SMARTY_ON')){
+			//如果开启了smarty则调用父类的构造函数
+			parent::__construct();
+		}
+		
 		if(method_exists($this, '__init')){
 			$this->__init();
 		}
@@ -26,8 +30,8 @@ class Controller extends SmartyView{
 		$this->var[$var] = $value;
 	}
 
-	//模版显示
-	protected function display($tpl=NULL){
+
+	protected function get_tpl($tpl){
 		if(is_null($tpl)){
 			$path = APP_TPL_PATH.'/'.CONTROLLER.'/'.ACTION.'.html';
 		}else{
@@ -36,9 +40,20 @@ class Controller extends SmartyView{
 			$path = APP_TPL_PATH.'/'.CONTROLLER.'/'.$tpl;
 
 		}
+		return $path;
+	}
+	//模版显示
+	protected function display($tpl=NULL){
+		$path = $this->get_tpl($tpl);
 		if(!is_file($path)) halt($path.'模版文件不存在');
-		extract($this->var);
-		include $path;
+		if(C('SMARTY_ON')){
+			//如果开启了smarty则调用父类的构造函数
+			parent::display($path);
+		}else{
+			extract($this->var);
+			include $path;
+		}
+		
 	}
 
 }

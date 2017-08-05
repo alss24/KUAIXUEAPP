@@ -30,6 +30,8 @@ return array(
 	'DB_DATABASE'=>'db_maven',
 	'DB_PREFIX'=>'t_',
 	//smarty配置项
+	//是否客气smarty
+	'SMARTY_ON'=>true,
 	//左定界符
 	'LEFT_DELIMITER'=>'{kx',
 	//右定界符

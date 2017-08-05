@@ -2090,7 +2090,7 @@ class Smarty
 
 /* vim: set expandtab: */
 
-?//此类用于将smarty将本框架进行相关联
+?>//此类用于将smarty将本框架进行相关联
 class SmartyView{
 	private static $smarty = NULL;
 	public function __construct(){
@@ -2098,10 +2098,12 @@ class SmartyView{
 		$smarty = new Smarty();
 		//配置模版目录
 		$smarty->template_dir = APP_TPL_PATH.'/'.CONTROLLER.'/';
+
 		//编译目录
-		$smary->compile_dir = APP_COMPILE_PATH;
+		$smarty->compile_dir = APP_COMPILE_PATH;
 		//缓存目录
 		$smarty->cache_dir = APP_CACHE_PATH;
+	
 		//定界符
 		$smarty->left_delimiter = C('LEFT_DELIMITER');
 		$smarty->right_delimiter = C('RIGHT_DELIMITER');
@@ -2109,8 +2111,13 @@ class SmartyView{
 		$smarty->caching = C('CACHE_ON');
 		//缓存时间
 		$smarty->cache_lifetime = C('CACHE_TIME');
-		p($smarty);
+		
 		self::$smarty = $smarty;
+	}
+
+
+	protected function display($tpl){
+		self::$smarty->display($tpl,$_SERVER['REQUEST_URI']);
 	}class Controller extends SmartyView{
 
 	//用于存放模版赋值的键值对
@@ -2118,7 +2125,11 @@ class SmartyView{
 
 	//构造函数
 	public function __construct(){
-		parent::__construct();
+		if(C('SMARTY_ON')){
+			//如果开启了smarty则调用父类的构造函数
+			parent::__construct();
+		}
+		
 		if(method_exists($this, '__init')){
 			$this->__init();
 		}
@@ -2138,8 +2149,8 @@ class SmartyView{
 		$this->var[$var] = $value;
 	}
 
-	//模版显示
-	protected function display($tpl=NULL){
+
+	protected function get_tpl($tpl){
 		if(is_null($tpl)){
 			$path = APP_TPL_PATH.'/'.CONTROLLER.'/'.ACTION.'.html';
 		}else{
@@ -2148,9 +2159,20 @@ class SmartyView{
 			$path = APP_TPL_PATH.'/'.CONTROLLER.'/'.$tpl;
 
 		}
+		return $path;
+	}
+	//模版显示
+	protected function display($tpl=NULL){
+		$path = $this->get_tpl($tpl);
 		if(!is_file($path)) halt($path.'模版文件不存在');
-		extract($this->var);
-		include $path;
+		if(C('SMARTY_ON')){
+			//如果开启了smarty则调用父类的构造函数
+			parent::display($path);
+		}else{
+			extract($this->var);
+			include $path;
+		}
+		
 	}
 
 }final class Application{
